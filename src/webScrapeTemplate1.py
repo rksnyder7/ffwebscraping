@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 # Enter url of page to be scraped and name of file for data output
-webURL = "https://fantasyfootballcalculator.com/rankings/ppr/defense"
+webURL = "https://www.fantasypros.com/nfl/rankings/dst-cheatsheets.php"
 outputName = "TempScrape.html"
 
 # Do Not Touch
@@ -13,15 +13,18 @@ html = BeautifulSoup(simple_get(webURL), 'html.parser')
 dataArray = []
 # Pick data to be scraped
 hold = 0
-for td in html.select('td'):
-    if hold == 3:
-        dataArray.append(td.text)
-        hold = -2
-    hold += 1
+
+
+# for td in html.find_all('td'):
+#     print(td.text)
+for x in html.select(".full-name"):
+    dataArray.append(x.text)
+
 
 
 print(dataArray)
 print(len(dataArray))
+
 # for tr in html.select('tr'):
 #     hold = 0
 #     for td in tr:
