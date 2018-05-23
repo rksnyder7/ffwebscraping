@@ -1,79 +1,51 @@
 from webScrapeSetup import simple_get
 from bs4 import BeautifulSoup
+import json
 
 
 # Enter url of page to be scraped and name of file for data output
-webURL = "https://www.fantasypros.com/nfl/rankings/dst-cheatsheets.php"
+webURL = "http://fantasy.nfl.com/research/rankings?offset=101&position=O&sort=average&statType=draftStats"
 outputName = "TempScrape.html"
 
 # Do Not Touch
 html = BeautifulSoup(simple_get(webURL), 'html.parser')
-# outputSite = open(outputName, 'w')
 
 dataArray = []
 # Pick data to be scraped
-hold = 0
 
+hold = 1
 
-# for td in html.find_all('td'):
-#     print(td.text)
-for x in html.select(".full-name"):
-    dataArray.append(x.text)
+for td in html.select('.playerNameFull'):
+	dataArray.append(td.text)
 
+# # 	if hold == 4:
+# # 		dataArray.append(td.text)
+# # 		hold = -1
+# # 	hold += 1
 
-
-print(dataArray)
-print(len(dataArray))
-
-# for tr in html.select('tr'):
-#     hold = 0
-#     for td in tr:
-#         if hold == 5:
-#             dataArray.append(td.text)
-#             break
-#         hold += 1
-
-# dataArray = dataArray[1:]
-# # print(dataArray)
-
-# finalArray = []
-
-
-# for x in range(len(dataArray)):
-#     hold = dataArray[x].index(',')
-#     finalArray.append(dataArray[x][hold+2:] + ' ' + dataArray[x][:hold])
-
-# print(finalArray)
-# print(len(finalArray))
-
-
-# for td in html.select('td.tbdy1'):
-#     dataArray.append(td.text)
-
-# print(len(dataArray))
-# print(dataArray)
-
-    # dataArray.append(td.text)
-    # hold = 0
-    # for td in tr:
-        # if hold == 3:
-        # dataArray.append(td)
-            # break
-        # hold += 1  
-    # outputSite.write(p.text)
-# hold = 0
-# for x in range(len(dataArray)):
-#     hold = dataArray[x].index(' ')
-    # dataArray[x] = dataArray[x][hold + 1:]
-# dataArray = dataArray[1:]
-# # for x in range(228,248):
-# #     holdArray.append(dataArray[x])
-
-# for x in range(len(dataArray)):
-#     hold = dataArray[x].index(' ')
-#     dataArray[x] = dataArray[x][hold + 1:]
 # print(dataArray)
 # print(len(dataArray))
 
-#Do Not Touch
-# outputSite.close()
+
+
+# for x in range(len(test)):
+# 	try:
+# 		pos = test[x].index(',')
+# 	except:
+# 		pos = test[x].index(' D/')
+# 	test[x] = test[x][:pos]
+
+
+# print(test)
+
+
+# for x in html.select("td a"):
+#     if hold == 1:
+#         dataArray.append(x.text)
+#         hold = -2
+#     hold += 1
+
+
+
+
+
